@@ -3,6 +3,7 @@ from flask_restful import Api, Resource, reqparse
 import pickle
 import numpy as np
 import json
+model = pickle.load(open('model.pkl','rb'))
 
 app = Flask(__name__)
 api = Api(app)
@@ -25,7 +26,4 @@ api.add_resource(OccupancyClassifier, '/occupancy')
 
 if __name__ == '__main__':
     # Load model
-    with open('model.pkl', 'rb') as f:
-        model = pickle.load(f)
-
     app.run(debug=True)
